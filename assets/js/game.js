@@ -8,6 +8,8 @@ var enemyHealth = 50;
 var enemyAttack = 12;
 
 var fight = function(enemyName) {
+    console.log(enemyName);
+    console.log(enemyHealth);
     while (playerHealth > 0 && enemyHealth > 0) {
       // ask player if they'd liked to fight or run
       var promptFight = window.prompt('Would you like FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
@@ -55,6 +57,7 @@ var fight = function(enemyName) {
       // check player's health
       if (playerHealth <= 0) {
         window.alert(playerName + ' has died!');
+        console.log("You have lost your robot in battle! Game Over!");
         // leave while() loop if player is dead
         break;
       } else {
@@ -64,7 +67,17 @@ var fight = function(enemyName) {
 };
     
 for ( var i = 0; i < enemyNames.length; i++) {
-    debugger ;
-    fight(enemyNames[i]);
+    if (playerHealth > 0){
+        window.alert("Welcome to Battlebots! Round :" + (i+1));
+        console.log("Welcome to Battlebots! Round :" + (i+1));
+        var pickedEnemyName = enemyNames[i]; //pick new enemy to fight based on the index of the enemyNames array
+        enemyHealth = 50;
+         // debugger ;
+        fight(pickedEnemyName); //reset enemyHaealth before starting new fight 
+    }
+    else {
+        window.alert("You have lost your robot in battle! Game Over!");
+        console.log("You have lost your robot in battle! Game Over!");
+    }
 }
 
